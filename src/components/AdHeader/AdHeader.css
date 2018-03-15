@@ -1,0 +1,20 @@
+.header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #C0C0C0;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+img {
+    margin: 70px;
+}
+
+.title-header {
+    text-decoration-color: #f21f46;
+    font-family: "Lato";
+    font-size: 2rem;
+    margin-right: 100px;
+}
+

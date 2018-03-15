@@ -1,0 +1,26 @@
+.input-search {
+    display: flex;
+    justify-content: flex-end
+}
+
+.box {
+    border: none
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.icon {
+    border-left: 1px solid #DCDCDC;
+    padding: 10px;
+}
+
+.wrap-icon {
+    display: block;
+    float: right;
+    border: 1px solid #DCDCDC;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 15px 105px;
+}

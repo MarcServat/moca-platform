@@ -1,0 +1,38 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.card {
+    text-decoration: none;
+    color:black;
+    margin: 10px;
+}
+
+.title {
+    display: block;
+    font-size: 50px;
+    text-align: center;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 30px;
+    text-align: center;
+    color: #A9A9A9;
+    margin-top: 0px;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.gender {
+    color: #A9A9A9;
+}
+
+.gender.profession {
+    font-style: italic;
+}
