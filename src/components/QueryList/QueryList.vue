@@ -1,29 +1,26 @@
 <template>
-  <div class="container">
-      <h2 class="title">Find your Oompa Loompa</h2>
-      <h4 class="subtitle">There are more than 100k</h4>
-      <div class="list">
-        <router-link    :to="{ name: 'Details', params: { id: oompaLoompa.id.toString(), oompaLoompa }}"
-                        class="card"
-                        v-for="oompaLoompa of showFullList"
-                        :key="oompaLoompa.id">
-            <img width="350px;" :src="oompaLoompa.image" alt="oompaLoompa">
-            <p class="name">{{ oompaLoompa.first_name }} {{ oompaLoompa.last_name }}</p>
-            <p class="gender">{{ resolveGender(oompaLoompa.gender) }}</p>
-            <p class="gender profession">{{ oompaLoompa.profession }}</p>
-        </router-link>
-      </div>
+  <div v-if="!$apollo.queries.search.loading">
+    <table>
+      <tr>
+          <th v-for="(value, i) in Object.keys(this.search.edges[0].node)" :key="i">{{capitalize(value)}}</th>
+      </tr>
+      <tr v-for="(edge, i) in search.edges" :key="i">
+          <td v-for="(value, key, i) in edge.node" :key="i">{{formatData(value, key)}}</td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import gql from 'graphql-tag'
+import { TOP_100R_EPOS } from '../../constants/graphql'
+import FormatTable from '../Mixins/FormatTable'
 
 export default {
   name: 'QueryList',
   components: {
   },
+  mixins: [FormatTable],
   data () {
     return {
       search: ''
@@ -31,28 +28,7 @@ export default {
   },
   apollo: {
     search: {
-      query: gql`query Top100Star($queryString: String!) {
-        search(query: $queryString, type: REPOSITORY, first: 100) {
-          edges {
-            node {
-            ... on Repository {
-                name
-                primaryLanguage {
-                name
-                color
-                }
-                description
-                diskUsage
-                forkCount
-                url
-                stargazers {
-                  totalCount
-                }
-              }
-            }
-          }
-        }
-      }`,
+      query: TOP_100R_EPOS,
       operationName: 'getTopRepos',
       variables: {
         queryString: 'stars:>100'
@@ -65,40 +41,11 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getList',
-      'getDataStored'
-    ]),
-    handleScroll (e) {
-      if (Math.round(window.innerHeight + window.scrollY) >= Math.round(document.body.offsetHeight)) {
-        window.removeEventListener('scroll', this.handleScroll, false)
-        const nextPage = this.page + 1
-        this.getNextPage(nextPage)
-      }
-    },
-    getNextPage (page) {
-      if (page <= this.total) {
-        this.getList({ page })
-          .then(res => {
-            window.addEventListener('scroll', this.handleScroll, false)
-          }).catch(err => {
-            throw err
-          })
-      }
-    }
+    ])
   },
   created () {
-    this.getDataStored().then(isStorageEmpty => {
-      isStorageEmpty = false
-      if (isStorageEmpty) {
-        this.getList()
-      }
-      window.addEventListener('scroll', this.handleScroll, false)
-    }).catch(err => {
-      throw err
-    })
   },
   beforeDestroy () {
-    window.removeEventListener('scroll', this.handleScroll, false)
   }
 }
 </script>
