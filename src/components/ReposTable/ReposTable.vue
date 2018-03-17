@@ -49,7 +49,7 @@ export default {
   mixins: [FormatTable],
   data () {
     return {
-      search: ''
+      search: {}
     }
   },
   apollo: {
@@ -70,7 +70,15 @@ export default {
     ]),
     ...mapMutations([
       'saveData'
-    ])
+    ]),
+    orderResults () {
+      this.search.edges.sort(function (a, b) {
+        console.log(a.node.stargazers.totalCount, b.node.stargazers.totalCount)
+        if (a < b) return -1
+        if (a > b) return 1
+        return 0
+      })
+    }
   },
   created () {
   },
@@ -78,7 +86,7 @@ export default {
   },
   watch: {
     search () {
-      console.log(this.search)
+      this.orderResults()
       if (!this.$apollo.queries.search.loading) { this.saveData(this.search) }
     }
   }
