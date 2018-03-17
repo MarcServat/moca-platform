@@ -45,5 +45,5 @@ ___
 ### Todos
 
 - Add multiselect to improve search component
-- Add graph to show large data
+- Add graph to show larger data
 
