@@ -1,8 +1,7 @@
 <template>
-  <div class="header">
+  <div class="fixed-top header">
     <img @click="toHome" width="100px" src="../../assets/img/logo-moca-red.svg" alt="moca-logo">
-    <span class="title-header">Top 100 Repos on GitHub</span>
-    <router-view></router-view>
+    <span class="title-header">Top 100 Repos on GitHub <i class="fab fa-github"></i></span>
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="back">
     <ad-header></ad-header>
     <search></search>
-    <query-list></query-list>
+    <ReposTable></ReposTable>
   </div>
 </template>
 
@@ -10,14 +10,14 @@
 
 import AdHeader from '../AdHeader/AdHeader.vue'
 import Search from '../Search/Search.vue'
-import QueryList from '../QueryList/QueryList.vue'
+import ReposTable from '../ReposTable/ReposTable.vue'
 
 export default {
   name: 'Home',
   components: {
     AdHeader,
     Search,
-    QueryList
+    ReposTable
   },
   data () {
     return {
@@ -27,3 +27,4 @@ export default {
   }
 }
 </script>
+<style scoped src="./Home.css"></style>

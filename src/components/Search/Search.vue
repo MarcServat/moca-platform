@@ -34,7 +34,6 @@ export default {
   },
   computed: {
     ...mapState({
-      oompas: state => state.response.results
     })
   },
   methods: {
