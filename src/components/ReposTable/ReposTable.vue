@@ -1,9 +1,6 @@
 <template>
-  <div>
-    <loading v-if="$apollo.queries.search.loading">
-      <div class="loading-in" slot="loading-in"></div>
-      <p slot="subtitle-loading">We are loading your statistics. Please wait</p>
-    </loading>
+  <div class="wrapper">
+    <loading v-if="$apollo.queries.search.loading"></loading>
     <div v-else class="card table-card">
       <table id="table" class="table table-hover">
         <thead>

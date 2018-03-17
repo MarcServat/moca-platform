@@ -9,6 +9,7 @@ a:hover {
 }
 
 .table-card {
+  margin-top: 70px;
   margin: 80px;
   padding: 0;
   -moz-box-shadow:    inset 0 0 1px #000000;
@@ -25,4 +26,8 @@ a:hover {
 .header {
   background-color: #333333;
   color: white;
+}
+
+.wrapper {
+  padding: 40px;
 }
