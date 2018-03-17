@@ -10,9 +10,10 @@ export default {
 </script>
 <style>
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   width: 100%;
   font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  background-size: cover;
 }
 </style>
