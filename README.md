@@ -1,6 +1,8 @@
 # Moca Platform
+It's a test for the company https://www.mocaplatform.com/
+
 A reporter which shows data from GitHub API in a table.
-see at 
+See at http://moca-platform.s3-website-eu-west-1.amazonaws.com/
 
 ## Build Setup
 
@@ -29,6 +31,8 @@ leverage the power that offers.
 To implement graphQL with Vuejs, I've used apollo which allows me to add a hook with my 
 query data inside of my component.
 
+I'll be glad to have any feedback
+
 * * *
 
 ### Resources
@@ -39,5 +43,7 @@ query data inside of my component.
 ___
 
 ### Todos
+
 - Add multiselect to improve search component
 - Add graph to show large data
+
