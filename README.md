@@ -1,5 +1,6 @@
 # Moca Platform
-
+A reporter which shows data from GitHub API in a table.
+see at 
 
 ## Build Setup
 
@@ -16,16 +17,27 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
 ### Description
+This project is develop with Vuejs and Vuex to manage the state, graphQL and Apollo
+
+<img src="https://camo.githubusercontent.com/e78e52aa36ff76ef5e142bfeced3b5f657b3fc26/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f3830302f312a483941414e6f6f664c716a53313058643554775259772e706e67" alt="schema" data-canonical-src="https://cdn-images-1.medium.com/max/800/1*H9AANoofLqjS10Xd5TwRYw.png" style="max-width:100%;">
+
+The aim of this project was hit graphQL as a first contact. I've tried to render the data using less JS as I could to 
+leverage the power that offers. 
+To implement graphQL with Vuejs, I've used apollo which allows me to add a hook with my 
+query data inside of my component.
+
+* * *
+
+### Resources
+
+- https://github.com/Akryum/vue-apollo
+- https://developer.github.com/v4/
+- https://developer.github.com/v4/explorer/
+___
+
+### Todos
+- Add multiselect to improve search component
+- Add graph to show large data
