@@ -1,8 +1,5 @@
-# Moca Platform
-It's a test for the company https://www.mocaplatform.com/
-
+# Repository Finder
 A reporter which shows data from GitHub API in a table.
-See at http://moca-platform.s3-website-eu-west-1.amazonaws.com/
 
 ## Build Setup
 
