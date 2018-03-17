@@ -1,0 +1,41 @@
+.Wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.Input {
+  margin-bottom: 20px;
+  display: inline-flex;
+  box-sizing: content-box;
+}
+
+.Input-text {
+  display: block;
+  margin: 0;
+  padding: 8px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: inherit;
+  line-height: 10px;
+  border: none;
+  border-radius: 4px;
+  transition: box-shadow 200ms;
+  padding-right: 40px;
+}
+
+.Input-text:focus {
+  outline: none;
+  box-shadow: 0 0 10px #f21f46;
+}
+
+#filtersubmit {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  right: 10px;
+  cursor: pointer;
+  font-size: larger;
+  margin-left: 5px;
+}

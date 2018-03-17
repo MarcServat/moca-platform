@@ -22,6 +22,8 @@ export default {
           return `${(value / 1000).toString()} MB`
         case 'stargazers':
           return new Intl.NumberFormat().format(value.totalCount)
+        case 'nameWithOwner':
+          return value
         case 'url':
           return ''
         case 'primaryLanguage':

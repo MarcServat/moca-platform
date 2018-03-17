@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
-    <loading v-if="$apollo.queries.search.loading"></loading>
+    <loading v-if="$apollo.queries.search.loading"/>
     <div v-else class="card table-card">
+      <search @updateValue="onUpdatedValue"><i class="fas fa-search">Search</i></search>
       <table id="table" class="table table-hover">
         <thead>
         <tr>
@@ -37,15 +38,18 @@ import { mapActions, mapState, mapMutations } from 'vuex'
 import { TOP_100R_EPOS } from '../../constants/graphql'
 import FormatTable from '../Mixins/FormatTable'
 import Loading from '../Loading/Loading.vue'
+import Search from '../Search/Search.vue'
 
 export default {
   name: 'ReposTable',
   components: {
-    Loading
+    Loading,
+    Search
   },
   mixins: [FormatTable],
   data () {
     return {
+      searchValue: '',
       search: {}
     }
   },
@@ -53,8 +57,10 @@ export default {
     search: {
       query: TOP_100R_EPOS,
       operationName: 'getTopRepos',
-      variables: {
-        queryString: 'stars:>100'
+      variables () {
+        return {
+          queryString: `${this.searchValue} sort:stars-desc stars:>=0`
+        }
       }
     }
   },
@@ -68,13 +74,9 @@ export default {
     ...mapMutations([
       'saveData'
     ]),
-    orderResults () {
-      this.search.edges.sort(function (a, b) {
-        console.log(a.node.stargazers.totalCount, b.node.stargazers.totalCount)
-        if (a < b) return -1
-        if (a > b) return 1
-        return 0
-      })
+    onUpdatedValue (value) {
+      this.searchValue = value
+      this.$apollo.queries.search.refetch()
     }
   },
   created () {
@@ -83,7 +85,6 @@ export default {
   },
   watch: {
     search () {
-      this.orderResults()
       if (!this.$apollo.queries.search.loading) { this.saveData(this.search) }
     }
   }
