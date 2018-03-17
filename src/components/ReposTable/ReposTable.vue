@@ -17,7 +17,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(edge, i) in search.edges" :key="i">
+        <tr v-for="(edge, i) in this.search.edges" :key="i">
           <th class="row-line" scope="row">{{i + 1}}</th>
             <td scope="row"
                 v-if="key !== '__typename'"
@@ -39,6 +39,7 @@ import { TOP_100R_EPOS } from '../../constants/graphql'
 import FormatTable from '../Mixins/FormatTable'
 import Loading from '../Loading/Loading.vue'
 import Search from '../Search/Search.vue'
+import swal from 'sweetalert2'
 
 export default {
   name: 'ReposTable',
@@ -66,6 +67,7 @@ export default {
   },
   computed: {
     ...mapState({
+      data: state => state.response
     })
   },
   methods: {
@@ -85,7 +87,17 @@ export default {
   },
   watch: {
     search () {
-      if (!this.$apollo.queries.search.loading) { this.saveData(this.search) }
+      if (this.$apollo.queries.search.loading === false && typeof this.search.edges[0] === 'undefined') {
+        swal({
+          type: 'error',
+          title: 'Oops... Please, try something different',
+          text: "You'll be redirect to your last search"
+        }).then(res => {
+          this.search = this.data
+        })
+      } else {
+        this.saveData(this.search)
+      }
     }
   }
 }

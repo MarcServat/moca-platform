@@ -9,7 +9,9 @@ export const TOP_100R_EPOS = gql`query ($queryString: String!) {
             totalCount
           }
           name
-          nameWithOwner
+          owner {
+            login
+          }
           description
           primaryLanguage {
             name

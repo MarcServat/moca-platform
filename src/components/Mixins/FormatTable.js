@@ -1,10 +1,12 @@
 export default {
   computed: {
     headers () {
-      const headers = Object.keys(this.search.edges[0].node)
-      const index = headers.indexOf('url')
-      headers[index] = ''
-      return headers
+      if (typeof this.search.edges[0] !== 'undefined') {
+        const headers = Object.keys(this.search.edges[0].node)
+        const index = headers.indexOf('url')
+        headers[index] = ''
+        return headers
+      }
     }
   },
   methods: {
@@ -22,8 +24,8 @@ export default {
           return `${(value / 1000).toString()} MB`
         case 'stargazers':
           return new Intl.NumberFormat().format(value.totalCount)
-        case 'nameWithOwner':
-          return value
+        case 'owner':
+          return value.login
         case 'url':
           return ''
         case 'primaryLanguage':
